@@ -1,0 +1,77 @@
+
+
+
+.cell {
+	display: inline-block;
+	border: 1px solid #ccc;
+	background-color:   #ffe6cc;
+	height: 15em;
+}
+
+.row.border .cell {
+	background-color: #000;
+}
+
+.border.cell {
+	background-color: #000;
+}
+
+.player-right {
+	background-image: url('../pictures/right.png');
+	background-size: 100% 100%;
+}
+
+.player-left {
+	background-image: url('../pictures/left.png');
+	background-size: 100% 100%;
+}
+
+.brick {
+	/*background-color: red;*/
+	background-image: url('../pictures/tree.png');
+	background-size: 100% 100%;
+}
+
+.exit {
+	/*background-color: orange;*/
+	background-image: url('../pictures/virus.png');
+	background-size: 100% 100%;
+}
+
+.enemy {
+	/*background-color: yellow;*/
+	background-image: url('../pictures/lit.png');
+	background-size: 100% 100%;
+}
+
+.level {
+	/*background-color: blue;*/
+	background-image: url('../pictures/diplome.png');
+	background-size: 100% 100%;
+}
+
+.box {
+	/*background-color: brown;*/
+	background-image: url('../pictures/livres.png');
+	background-size: 100% 100%;
+}
+#game-area{
+    text-align: center;
+   
+}
+#game-infos{
+       color: #ffe6cc;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#pseudo-first {
+	font-size: 2em;
+    margin-bottom: 0.1em;
+}
+#lifepoints {
+	font-size: 2em;
+}
+#pseudo-first span {
+	color: orange;
+}
