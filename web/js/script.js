@@ -7,7 +7,7 @@ var nbEnemies = 3;
 var enemiesInterval = null;
 var gameInterval = null;
 var seconds = 1;
-console.log(data.map);
+
 // Deux fonction pour créer un futur élément et le personnaliser 
 function put_element(v, className) {
 	$('#col-' + v.y + '-' + v.x).addClass(className);
