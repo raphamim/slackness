@@ -7,7 +7,8 @@ var nbEnemies = 3;
 var enemiesInterval = null;
 var gameInterval = null;
 var seconds = 1;
-
+console.log(data.map);
+// Deux fonction pour créer un futur élément et le personnaliser 
 function put_element(v, className) {
 	$('#col-' + v.y + '-' + v.x).addClass(className);
 	for (var row = 0; row < v.width; row++) {
@@ -20,13 +21,14 @@ function put_element(v, className) {
 		}
 	}
 }
-
 function create_elements() {
 	$.each(map.elements, function(k, v) {
 		put_element(v, v.type);
 	});
 }
 
+
+//si l'élément est déplacable
 function is_movable(type) {
 	switch (type) {
 		case 'box':
@@ -37,7 +39,7 @@ function is_movable(type) {
 			return false;
 	}
 }
-
+//recuperer la position précédente
 function get_previous_position(direction, x, y) {
 	switch (direction) {
 		case 'left':
@@ -55,7 +57,7 @@ function get_previous_position(direction, x, y) {
 	}
 	return get_cell(x, y);
 }
-
+// si l'on perd tout cette vie, game over
 function game_over() {
 	$('#lifepoints').html('Nombre de vie(s) : ' +lifepoints);
 	if (0 == lifepoints) {
@@ -63,7 +65,7 @@ function game_over() {
 
 	}
 }
-
+//fonction pour le cas de la case ou se trouve le player
 function player_cases(direction, x, y, element) {
 	switch (element.data('type')) {
 		case 'box':
@@ -118,7 +120,7 @@ function box_cases(direction, x, y, element) {
 	return true;
 }
 
-
+// fonction pour gérer l'emplacement des ennemis et leurs attaques
 function enemy_cases(direction, x, y, element) {
 	switch (element.data('type')) {
 		case 'brick':

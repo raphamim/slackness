@@ -5,8 +5,6 @@ class Personnage {
 	protected $life;
 	protected $isAlive= true;
 
-	public function moveLeft() {}
-
 	public function getName(){
 		return $this->name;
 	}
@@ -60,8 +58,9 @@ class Personnage {
 // CLASS DE NOTRE PERSONNAGE
 class Eleve extends Personnage { 
 
-	//Pour récupérer la face du mec
+	//Pour récupérer la face du personnage
 	protected $face;
+	protected $score;
 
 	public function setFace($face){
 		$this->face = $face;
@@ -71,18 +70,24 @@ class Eleve extends Personnage {
 		return $this->face;
 	}
 
-	public function moveRight(){}
-	public function jump(){}
-	public function kill(){}
+	public function setScore($score){
+		$this->score = $score;
+	}
+
+	public function getScore(){
+		return $this->score;
+	}
+
+
+	
+	// public function jump(){}
+	// public function kill(){}
+
 	//il gagne le niveau + passe au suivant
 	public function win(){}
 	//pour modif la face du personnage selon le bonus ou le malus qu'il prend
 	public function face(){}
 }
-/*$test = new Eleve("fdp");
-$test->setFace("cheum");
-echo $test->getName()." est plutot ".$test->getFace();
-*/
 
 
 
@@ -98,25 +103,25 @@ class Enemy extends Personnage {
 
 }
 
-class Laziness extends Enemy {
-	//fonction qui ralentit le personnage
-	public function slowPerso(){}
-}
+// class Laziness extends Enemy {
+// 	//fonction qui ralentit le personnage
+// 	public function slowPerso(){}
+// }
 
 
-class Sncf extends Enemy {
-	// fonction qui accélère la vitesse de déplacement de l'ennemi
-	public function speedMove(){}
-}
-class Graduation extends Enemy {
-	// fonction qui fait reculer le personnage
-	public function recul(){}
-}
-class Disease extends Enemy {
-	// fonction qui contamine le perso d'un futur effet determiné
-	public function contamine(){}
+// class Sncf extends Enemy {
+// 	// fonction qui accélère la vitesse de déplacement de l'ennemi
+// 	public function speedMove(){}
+// }
+// class Graduation extends Enemy {
+// 	// fonction qui fait reculer le personnage
+// 	public function recul(){}
+// }
+// class Disease extends Enemy {
+// 	// fonction qui contamine le perso d'un futur effet determiné
+// 	public function contamine(){}
 
-}
+// }
 
 
 
@@ -149,12 +154,3 @@ class SchoolBook extends Item {
 }
 
 
-
-//CLASS USER BASE DE DONNEES
-
-
-class User {
-	public $name;
-	public $score;
-
-}
