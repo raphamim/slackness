@@ -18,12 +18,12 @@
 
 .player-right {
 	background-image: url('../pictures/right.png');
-	background-size: 100% 100%;
+	background-size: 100% 87%;
 }
 
 .player-left {
 	background-image: url('../pictures/left.png');
-	background-size: 100% 100%;
+	background-size: 100% 87%;
 }
 
 .brick {
