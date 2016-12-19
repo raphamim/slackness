@@ -66,11 +66,14 @@
 }
 
 #pseudo-first {
-	font-size: 2em;
+	font-size: 1em;
     margin-bottom: 0.1em;
 }
 #lifepoints {
 	font-size: 2em;
+}
+#lifepoints span {
+	color: orange;
 }
 #pseudo-first span {
 	color: orange;

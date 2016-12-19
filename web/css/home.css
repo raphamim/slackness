@@ -54,4 +54,10 @@ table {
 .gameov span {
   color: orange;
 }
+#levels {
+  font-size: 2em;
+}
+#levels span {
+  color: orange;
+}
 

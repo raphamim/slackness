@@ -7,6 +7,7 @@ var nbEnemies = 3;
 var enemiesInterval = null;
 var gameInterval = null;
 var seconds = 1;
+var level = 1;
 
 // Deux fonction pour créer un futur élément et le personnaliser 
 function put_element(v, className) {
@@ -65,6 +66,10 @@ function game_over() {
 
 	}
 }
+
+function level_up(){
+	$('#levels').html('Tu es seulement au niveau <span>'+level+'</span> feignasse !');
+}
 //fonction pour le cas de la case ou se trouve le player
 function player_cases(direction, x, y, element) {
 	switch (element.data('type')) {
@@ -85,6 +90,7 @@ function player_cases(direction, x, y, element) {
 			clearInterval(enemiesInterval);
 			clearInterval(gameInterval);
 			genere_map(nbEnemies);
+			level += 1;
 			return false;
 	}
 	var player = get_cell(player_pos.x, player_pos.y);
@@ -264,8 +270,10 @@ function genere_map() {
 
 		player_movements();
 		init_enemies_movements();
-		$('#lifepoints').html('Nombre de vie(s) : ' +lifepoints);
+		$('#lifepoints').html('Nombre de vie(s) : <span>' +lifepoints+'</span>');
+		$('#levels').html('Niveau : <span>' +level+'</span>');
 		initGameTime();
+
 
 	}).fail(function() {
 		//gestion des erreurs
