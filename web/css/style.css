@@ -28,19 +28,19 @@
 
 .brick {
 	/*background-color: red;*/
-	background-image: url('../pictures/tree.png');
+	background-image: url('../pictures/tree2.png');
 	background-size: 100% 100%;
 }
 
 .exit {
 	/*background-color: orange;*/
-	background-image: url('../pictures/virus.png');
+	background-image: url('../pictures/school-bus.png');
 	background-size: 100% 100%;
 }
 
 .enemy {
 	/*background-color: yellow;*/
-	background-image: url('../pictures/lit.png');
+	background-image: url('../pictures/sleep.png');
 	background-size: 100% 100%;
 }
 
@@ -52,8 +52,8 @@
 
 .box {
 	/*background-color: brown;*/
-	background-image: url('../pictures/livres.png');
-	background-size: 100% 100%;
+	background-image: url('../pictures/coffee-cup.png');
+	background-size: 100% 87%;
 }
 #game-area{
     text-align: center;
