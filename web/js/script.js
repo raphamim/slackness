@@ -212,7 +212,7 @@ function initGameTime() {
 	}, 1000);
 }
 
-//création de la Map
+//création de la Map en ajax
 function genere_map() {
 
 	$.ajax({
