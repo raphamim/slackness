@@ -60,4 +60,12 @@ table {
 #levels span {
   color: orange;
 }
+select {
+  margin-left: 5px;
+    height: 3em;
+    color: #ab9c8d;
+    background-color: #1a0e03;
+    font-weight: bold;
+    font-size: 0.9em;
+}
 
