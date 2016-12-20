@@ -42,7 +42,7 @@ if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
         <embed src="web/img/theme.mp3" autostart="true" loop="false" hidden="true"></embed>
         <div id="game-area"></div>
         <div id="game-infos">
-            <div id="pseudo-first">Tu es en retard <span><?= $player->getName();?><?= $player->getFace();?></span>, fonces à l'école ! </div>
+            <div id="pseudo-first">Tu es en retard <span><?= $player->getName();?></span>, fonces à l'école ! </div>
             <div id="lifepoints"></div>
             <div id="levels"></div>
             <div id="game-time">Temps de jeu : 0 seconde</div>
