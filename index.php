@@ -9,9 +9,9 @@ if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
     $my_id = $_POST['my_id'];
     $player = new Eleve($my_id, 3);
     $player->setFace($_POST['choix']);
-    $onoff = true;
+    $player->setIsLogged(true);
+    $onoff = $player->getIsLogged();
     $player->charChoice();
-    
 } 
 
  if ($onoff === false) {

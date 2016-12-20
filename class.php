@@ -3,6 +3,7 @@
 class Personnage {
 	protected $name;
 	protected $life;
+	
 	protected $isAlive= true;
 
 	public function getName(){
@@ -13,6 +14,7 @@ class Personnage {
 		$this->name = $name;
 	}
 
+
 	public function getLife(){
 		return $this->life;
 	}
@@ -20,6 +22,9 @@ class Personnage {
 	public function setLife($life){
 		$this->life = $life;
 	}
+
+
+	
 
 	// fonction pour savoir si le personnage Elève ou Ennemi est en vie.
 	public function alive(){
@@ -60,6 +65,7 @@ class Eleve extends Personnage {
 
 	//Pour récupérer la face du personnage
 	protected $face;
+	protected $isLogged= false;
 	protected $score;
 
 	public function setFace($face){
@@ -68,6 +74,14 @@ class Eleve extends Personnage {
 
 	public function getFace(){
 		return $this->face;
+	}
+
+	public function getIsLogged(){
+		return $this->isLogged;
+	}
+
+	public function setIsLogged($isLogged){
+		$this->isLogged = $isLogged;
 	}
 
 	public function setScore($score){
@@ -239,24 +253,24 @@ abstract class Item {
 	public function changePhys(){}
 }
 
-class Coffee extends Item {
-	// fonction qui accélère le User
-	public function speedHeart(){}
-}
+// class Coffee extends Item {
+// 	// fonction qui accélère le User
+// 	public function speedHeart(){}
+// }
 
-class Drug extends Item {
-	//fonction qui soigne le User
-	public function heal(){}
-}
+// class Drug extends Item {
+// 	//fonction qui soigne le User
+// 	public function heal(){}
+// }
 
-class Shoes extends Item {
-	//fonction qui permet de sauter plus haut
-	public function doubleJump(){}
-}
+// class Shoes extends Item {
+// 	//fonction qui permet de sauter plus haut
+// 	public function doubleJump(){}
+// }
 
-class SchoolBook extends Item {
-	//fonction qui élimine tout les ennemis sur la ligne
-	public function learn(){} 
-}
+// class SchoolBook extends Item {
+// 	//fonction qui élimine tout les ennemis sur la ligne
+// 	public function learn(){} 
+// }
 
 
