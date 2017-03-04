@@ -67,6 +67,7 @@ function game_over() {
 	}
 }
 
+// Fonction pour récupérer le niveau actuel
 function level_up(){
 	$('#levels').html('Tu es seulement au niveau <span>'+level+'</span> feignasse !');
 }
@@ -126,7 +127,7 @@ function box_cases(direction, x, y, element) {
 	return true;
 }
 
-// fonction pour gérer l'emplacement des ennemis et leurs attaques
+// Fonction pour gérer l'emplacement des ennemis et leurs attaques
 function enemy_cases(direction, x, y, element) {
 	switch (element.data('type')) {
 		case 'brick':
@@ -146,12 +147,12 @@ function enemy_cases(direction, x, y, element) {
 	return true;
 }
 
-//Ajoute une case selon la position
+// Ajoute une case selon la position
 function get_cell(x, y) {
 	return $('#col-' + y + '-' + x);
 }
 
-//gestion des autorisations de mouvement d'un élément
+// Gestion des autorisations de mouvement d'un élément
 function element_can_move(direction, x, y, type) {
 	if ('left' === direction && --x == 1 ||
 		'right' === direction && ++x == map.width ||
@@ -216,7 +217,7 @@ function initGameTime() {
 function genere_map() {
 
 	$.ajax({
-		url: 'php/map_ajax.php',
+		url: 'ajax/map_ajax.php',
 		data: {
 			'function': 'genere_map',
 			'nbEnemies': nbEnemies
@@ -251,13 +252,13 @@ function genere_map() {
 		$('#game-area').html(html);
 		$('#game-area .cell').css(
 			{
-				'width': /*data.map.pixels*/27 + 'px',
-				'height': /*data.map.pixels*/27 + 'px',
+				'width': 2 + '%',
+				'height': 27 + 'px',
 			}
 		);
 		$('#game-area .row').css(
 			{
-				'height': /*data.map.pixels*/25 + 'px'
+				'height': 25 + 'px'
 			}
 		);
 

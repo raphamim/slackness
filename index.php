@@ -6,7 +6,7 @@ $my_id = '';
 
 if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
     // On réceptionne le champ depuis le POST dans une variable
-    $my_id = $_POST['my_id'];
+    $my_id = htmlspecialchars($_POST['my_id']);
     $player = new Eleve($my_id, 3);
     $player->setFace($_POST['choix']);
     $player->setIsLogged(true);

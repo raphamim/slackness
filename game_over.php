@@ -8,43 +8,34 @@
     <form action="index.php" method="POST">
     <button type="submit" class="button-css">Rejouer</button>
     <div class="gameov">
-  <table class="table">
-      <thead>
-        <tr>
-          <th> # </th>
-          <th> Player </th>
-          <th> Score </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>  Kevin_leBoss  </td>
-          <td>  19785 pts  </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>  Mickey  </td>
-          <td>  8745 pts  </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>  Toto  </td>
-          <td>  7454 pts  </td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>  Tata  </td>
-          <td>  5444 pts  </td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>  tniarcorac  </td>
-          <td>  450 pts  </td>
-        </tr>
-        
-      </tbody>
-    </table>
+    <table>
+   <caption class:"caption">Voici nos <em>5</em> meilleurs <em>Slacker</em></caption>
+
+   <tr>
+       <th> Slacker </th>
+       <th> Scores </th>
+   </tr>
+   <tr>
+       <td>Slacker1</td>
+       <td><em>124932</em> pts</td>
+   </tr>
+    <tr>
+       <td>Slacker2sqSQ</td>
+       <td><em>12433</em> pts</td>
+   </tr>
+    <tr>
+       <td>Slackersqdqsdsq</td>
+       <td><em>1243</em> pts</td>
+   </tr>
+    <tr>
+       <td>Slackersd</td>
+       <td><em>124</em> pts</td>
+   </tr>
+    <tr>
+       <td>Slackersd</td>
+       <td><em>12</em> pts</td>
+   </tr>
+</table>
 </div>
     </form>
 </div>
