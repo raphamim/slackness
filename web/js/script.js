@@ -7,9 +7,10 @@ var nbEnemies = 3;
 var enemiesInterval = null;
 var gameInterval = null;
 var seconds = 1;
+var score = 0;
 var level = 1;
 
-// Deux fonction pour créer un futur élément et le personnaliser 
+// Fonction pour créer un futur élément et le personnaliser 
 function put_element(v, className) {
 	$('#col-' + v.y + '-' + v.x).addClass(className);
 	for (var row = 0; row < v.width; row++) {
@@ -22,6 +23,8 @@ function put_element(v, className) {
 		}
 	}
 }
+
+// Fonction pour rajouter un élément a la map
 function create_elements() {
 	$.each(map.elements, function(k, v) {
 		put_element(v, v.type);
@@ -29,7 +32,7 @@ function create_elements() {
 }
 
 
-//si l'élément est déplacable
+//Si l'élément est déplacable
 function is_movable(type) {
 	switch (type) {
 		case 'box':
@@ -40,7 +43,8 @@ function is_movable(type) {
 			return false;
 	}
 }
-//recuperer la position précédente
+
+//Récuperer la position précédente
 function get_previous_position(direction, x, y) {
 	switch (direction) {
 		case 'left':
@@ -58,10 +62,28 @@ function get_previous_position(direction, x, y) {
 	}
 	return get_cell(x, y);
 }
-// si l'on perd tout cette vie, game over
+function sendDatas() {
+	$.ajax({
+		url: "ajax/send_datas.php",
+		data: {
+			player: $('#pseudo-first span').html(),
+			level: $('#levels span').html(),
+			score: $('#scores span').html(),
+			function: 'sendDatas'
+		},
+		method: "POST"
+	}).done(function(data){
+		console.log('Envoie vers la base réussi ! ');
+	}).fail(function(error){
+		console.log(error);
+		
+	});
+}
+// Si l'on perd tous ces points de vie, game over
 function game_over() {
 	$('#lifepoints').html('Nombre de vie(s) : ' +lifepoints);
 	if (0 == lifepoints) {
+		sendDatas(); 
 		document.location.href="game_over.php";
 
 	}
@@ -71,7 +93,8 @@ function game_over() {
 function level_up(){
 	$('#levels').html('Tu es seulement au niveau <span>'+level+'</span> feignasse !');
 }
-//fonction pour le cas de la case ou se trouve le player
+
+// Fonction pour définir les réactions selon les cases ou se déplace le player 
 function player_cases(direction, x, y, element) {
 	switch (element.data('type')) {
 		case 'box':
@@ -92,6 +115,7 @@ function player_cases(direction, x, y, element) {
 			clearInterval(gameInterval);
 			genere_map(nbEnemies);
 			level += 1;
+			score += 500;
 			return false;
 	}
 	var player = get_cell(player_pos.x, player_pos.y);
@@ -107,7 +131,7 @@ function player_cases(direction, x, y, element) {
 	player_pos.y = y;
 }
 
-
+// Fonction qui gère les évenements lorsque l'on pousse des cases 
 function box_cases(direction, x, y, element) {
 	switch (element.data('type')) {
 		case 'brick':
@@ -116,7 +140,10 @@ function box_cases(direction, x, y, element) {
 			return false;
 		case 'enemy':
 			element.data('type', '').removeClass('enemy');
+			score += 150;
+			showScore();
 			if ($('.enemy').length == 0) {
+				// Si il n'y a plus d'énnemis on dégage la sortie 
 				$('.exit').data('type', '').removeClass('exit');
 			}
 			break;
@@ -205,15 +232,19 @@ function init_enemies_movements() {
 	}, 1000);
 }
 
-//initialisation du temps de jeu 
+// Initialisation du temps de jeu 
 function initGameTime() {
 	gameInterval = setInterval(function() {
-		$('#game-time').html('Temps de jeu : ' + seconds + ' seconde(s)');
+		$('#game-time').html('Temps de jeu : <span>' + seconds + '</span> seconde(s)');
 		seconds++;
 	}, 1000);
 }
 
-//création de la Map en ajax
+// Fonction pour récupérer le score
+function showScore() {
+	$('#scores').html('Score : <span>' +score+'</span>');
+}
+// Création de la Map en ajax
 function genere_map() {
 
 	$.ajax({
@@ -273,6 +304,7 @@ function genere_map() {
 		init_enemies_movements();
 		$('#lifepoints').html('Nombre de vie(s) : <span>' +lifepoints+'</span>');
 		$('#levels').html('Niveau : <span>' +level+'</span>');
+		showScore();
 		initGameTime();
 
 

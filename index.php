@@ -44,6 +44,7 @@ if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
         <div id="game-infos">
             <div id="pseudo-first">Tu es en retard <span><?= $player->getName();?></span>, fonces à l'école ! </div>
             <div id="lifepoints"></div>
+            <div id="scores"></div>
             <div id="levels"></div>
             <div id="game-time">Temps de jeu : 0 seconde</div>
         </div>

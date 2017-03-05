@@ -166,10 +166,7 @@ select {
 #lifepoints {
 	font-size: 1em;
 }
-#lifepoints span {
-	color: orange;
-}
-#pseudo-first span {
+#game-infos div span   {
 	color: orange;
 }
 
