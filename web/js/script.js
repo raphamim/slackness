@@ -83,8 +83,10 @@ function sendDatas() {
 function game_over() {
 	$('#lifepoints').html('Nombre de vie(s) : ' +lifepoints);
 	if (0 == lifepoints) {
-		sendDatas(); 
-		document.location.href="game_over.php";
+		sendDatas();
+		$('#game-area').fadeToggle(2000); 
+		$('#game-infos').fadeToggle(2000); 
+		setTimeout(function(){ document.location.href="game_over.php"}, 3000);
 
 	}
 }
@@ -309,14 +311,13 @@ function genere_map() {
 
 
 	}).fail(function() {
-		//gestion des erreurs
+		// Gestion des erreurs
 		alert('AJAX error');
 	});
 
 }
 
 $(document).ready(function() {
-	//génerer la map quand le dom est chargé
+	// Génerer la map quand le dom est chargé
 	genere_map();
-
 });

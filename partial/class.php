@@ -3,6 +3,7 @@
 class Personnage {
 	protected $name;
 	protected $life;
+	protected $score;
 	
 	protected $isAlive= true;
 
@@ -23,10 +24,18 @@ class Personnage {
 		$this->life = $life;
 	}
 
+		public function getScore(){
+		return $this->score;
+	}
+
+	public function setScore($score){
+		$this->score = $score;
+	}
+
 
 	
 
-	// fonction pour savoir si le personnage Elève ou Ennemi est en vie.
+	// fonction pour savoir si le personnage Elève ou Ennemi est en vie
 	public function alive(){
 		if ($this->life == 0) {
 			$this->isAlive= false;
@@ -34,6 +43,11 @@ class Personnage {
 		} else {
 			return $this->name." est encore en vie !";
 		}
+	}
+	// Fonction pour afficher le résultats lors du game over
+	public function result(){
+		return 'Bien essayé '.$this->name.'! Tu as atteint un score de '.$this->score.'<br/> 
+		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !';
 	}
 
 	//Construct de l'objet sans paramètre obligatoire

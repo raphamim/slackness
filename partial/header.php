@@ -20,3 +20,4 @@
                <a href="#"><img class="mobile" src="web/img/ios.svg" alt="appli pour iphone"></a>
                 <a href="#"><img class="mobile" src="web/img/android.svg" alt="appli pour android"></a>
         </div>
+        

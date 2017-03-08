@@ -1,19 +1,17 @@
 
 <?php 
 include 'partial/header.php';
-$onoff = false;
-$my_id = '';
-
-if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
-    // On réceptionne le champ depuis le POST dans une variable
-    $my_id = htmlspecialchars($_POST['my_id']);
-    $player = new Eleve($my_id, 3);
-    $player->setFace($_POST['choix']);
-    $player->setIsLogged(true);
-    $onoff = $player->getIsLogged();
-    $player->charChoice();
-} 
-
+    $onoff = false;
+    $my_id = ''; 
+        if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
+            // On réceptionne le champ depuis le POST dans une variable
+            $my_id = htmlspecialchars($_POST['my_id']);
+            $player = new Eleve($my_id, 3);
+            $player->setFace(htmlspecialchars($_POST['choix']));
+            $player->setIsLogged(true);
+            $onoff = $player->getIsLogged();
+            $player->charChoice(); 
+        }
  if ($onoff === false) {
      
  
@@ -22,7 +20,7 @@ if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
     <div id="enter-game">
     <a href="index.php"><img src="web/img/logo_slackness.png" alt="logo"></a>
     <form action="index.php" method="POST">
-    <input name="my_id" type="text" placeholder="maximum 15 char">
+    <input id="pseudo-value" name="my_id" type="text" placeholder="maximum 15 char">
     <select name="choix">
         <option value="basic">L'étudiant</option>
         <option value="captamerica">Captain America</option>
@@ -33,11 +31,11 @@ if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
         <option value="winnie">Winnie L'ourson</option>
         <option value="yoda">Yoda</option>
     </select>
-    <button type="submit" class="button-css">Jouer</button>
+    <button type="submit" id="valid-pseudo" class="button-css">Jouer</button>
     </form>
     </div>
     <?php } else { 
-            
+           
         ?>
         <embed src="web/img/theme.mp3" autostart="true" loop="false" hidden="true"></embed>
         <div id="game-area"></div>
