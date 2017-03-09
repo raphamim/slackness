@@ -31,6 +31,12 @@ function create_elements() {
 	});
 }
 
+// Fonction qui anime la perte d'une vie
+function animLesslife() {
+	$('#less-life').show();
+	$('#less-life').fadeToggle(2000);
+	setTimeout(function(){$('#less-life').hide();}, 3000);
+}
 
 //Si l'élément est déplacable
 function is_movable(type) {
@@ -109,6 +115,7 @@ function player_cases(direction, x, y, element) {
 			return false;
 		case 'enemy':
 			lifepoints--;
+			animLesslife();
 			game_over();
 			break;
 		case 'level':
@@ -167,6 +174,7 @@ function enemy_cases(direction, x, y, element) {
 	}
 	if (element.hasClass('player-' + sens)) {
 		lifepoints--;
+		animLesslife();
 		game_over();
 	}
 

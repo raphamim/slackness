@@ -44,7 +44,7 @@ include 'partial/header.php';
             <div id="lifepoints"></div>
             <div id="scores"></div>
             <div id="levels"></div>
-            <div id="game-time">Temps de jeu : 0 seconde</div>
+            <div id="game-time">Temps de jeu : 0 seconde </div><img id="less-life" src="web/img/-life.png" alt="skull-life">
         </div>
     <?php } 
 
