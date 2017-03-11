@@ -123,7 +123,8 @@ function player_cases(direction, x, y, element) {
 			clearInterval(enemiesInterval);
 			clearInterval(gameInterval);
 			genere_map(nbEnemies);
-			level += 1;
+			lifepoints++;
+			level++;
 			score += 500;
 			return false;
 	}

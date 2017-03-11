@@ -9,8 +9,7 @@ include 'partial/header.php';
             $player = new Eleve($my_id, 3);
             $player->setFace(htmlspecialchars($_POST['choix']));
             $player->setIsLogged(true);
-            $onoff = $player->getIsLogged();
-            $player->charChoice(); 
+            $onoff = $player->getIsLogged(); 
         }
  if ($onoff === false) {
      
@@ -35,7 +34,16 @@ include 'partial/header.php';
     </form>
     </div>
     <?php } else { 
-           
+           if ($player->getFace() == 'basic') {
+                $player->charChoice();
+           } else {?>
+                <style type="text/css">
+                        .player-right, .player-left {
+                        background-image: <?= $player->charChoice();?>;
+                        background-size: 100% 87%;
+                        }
+				</style>
+           <?php }
         ?>
         <embed src="web/img/theme.mp3" autostart="true" loop="false" hidden="true"></embed>
         <div id="game-area"></div>
