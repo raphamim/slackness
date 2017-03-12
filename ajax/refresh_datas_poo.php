@@ -4,7 +4,7 @@ require '../partial/class.php';
 if (!isset($current_player)){
 $current_player = new Eleve($_POST['player'], $_POST['life']);
 }
-
+if ($current_player->getIsAlive() == true) {
 // Envoie des données à chaque actualisation
 $current_player->setLevel($_POST['level']);
 $current_player->setLife($_POST['life']);
@@ -18,7 +18,8 @@ echo json_encode('Life : '.$current_player->getLife());
 echo json_encode('Time : '.$current_player->getTime()); */
 
 // Game over en POO (si life = 0)
-// $current_player->alive();
+ $current_player->alive();
+}
 
 // Récupération des résultats pour l'afficher sur la page game over
-echo json_encode($current_player->result());
+// echo json_encode($current_player->result());

@@ -3,7 +3,6 @@
 class Personnage {
 	protected $name;
 	protected $life;
-	protected $score;
 	
 	protected $isAlive= true;
 
@@ -24,18 +23,17 @@ class Personnage {
 		$this->life = $life;
 	}
 
+	public function getIsAlive(){
+		return $this->isAlive;
+	}
+
+	public function setIsAlive($isAlive){
+		$this->isAlive = $isAlive;
+	}
 	
 
 	
-	public function alive(){
-		if ($this->life == 0) {
-			$this->isAlive= false;
-			header('Location: ../game_over.php');
-			exit();
-		} else {
-			return $this->name." est encore en vie !";
-		}
-	}
+
 
 	//Construct de l'objet sans paramètre obligatoire
 	public function __construct($name='' ,$life=''){
@@ -108,6 +106,21 @@ class Eleve extends Personnage {
 
 	public function getTime(){
 		return $this->time;
+	}
+
+	public function alive(){
+		if ($this->life == 0) {
+			$this->isAlive= false;
+			/*header('Location: game_over.php');
+			exit();*/
+			session_start();
+			$_SESSION['name'] = $this->name;
+			$_SESSION['score'] = $this->score;
+			$_SESSION['time'] = $this->time;
+			$_SESSION['level'] = $this->level;
+		} else {
+			return $this->name." est encore en vie !";
+		}
 	}
 
 	// Fonction pour afficher le résultats lors du game over

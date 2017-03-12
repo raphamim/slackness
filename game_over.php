@@ -22,7 +22,12 @@
 
 <div id="enter-game"> 
     <a href="index.php"><img src="web/img/logo_slackness.png" alt="logo"></a>
-    <div class="gameov"><!-- getResult du current_player TO DO --></div>
+    <?php session_start(); ?>
+    <div class="gameov"><!-- Résultat du current_player -->
+        <p>Bien essayé <span><?= $_SESSION['name']; ?></span> ! 
+        Tu as atteint un score de <span><?= $_SESSION['score']; ?></span> en seulement <span><?= $_SESSION['time']; ?></span> secondes<br/> 
+		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !</p>
+    </div>
     <form action="index.php" method="POST">
     <button type="submit" class="button-css">Rejouer</button>
     <div id="result"></div>
