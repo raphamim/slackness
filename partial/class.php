@@ -24,30 +24,17 @@ class Personnage {
 		$this->life = $life;
 	}
 
-		public function getScore(){
-		return $this->score;
-	}
-
-	public function setScore($score){
-		$this->score = $score;
-	}
-
-
 	
 
-	// fonction pour savoir si le personnage Elève ou Ennemi est en vie
+	
 	public function alive(){
 		if ($this->life == 0) {
 			$this->isAlive= false;
-			return $this->name." a clamsé ! <br/>";
+			header('Location: ../game_over.php');
+			exit();
 		} else {
 			return $this->name." est encore en vie !";
 		}
-	}
-	// Fonction pour afficher le résultats lors du game over
-	public function result(){
-		return 'Bien essayé '.$this->name.'! Tu as atteint un score de '.$this->score.'<br/> 
-		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !';
 	}
 
 	//Construct de l'objet sans paramètre obligatoire
@@ -77,10 +64,11 @@ class Personnage {
 // CLASS DE NOTRE PERSONNAGE
 class Eleve extends Personnage { 
 
-	//Pour récupérer la face du personnage
 	protected $face;
 	protected $isLogged= false;
 	protected $score;
+	protected $level;
+	protected $time;
 
 	public function setFace($face){
 		$this->face = $face;
@@ -105,6 +93,30 @@ class Eleve extends Personnage {
 	public function getScore(){
 		return $this->score;
 	}
+
+	public function setLevel($level){
+		$this->level = $level;
+	}
+
+	public function getLevel(){
+		return $this->level;
+	}
+
+	public function setTime($time){
+		$this->time = $time;
+	}
+
+	public function getTime(){
+		return $this->time;
+	}
+
+	// Fonction pour afficher le résultats lors du game over
+	public function result(){
+		return 'Bien essayé <span>'.$this->name.'</span>! Tu as atteint un score de <span>'.$this->score.'</span> en seulement'.$this->time.' secondes<br/> 
+		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !';
+	}
+
+	// Fonction pour le choix du personnage
 	public function charChoice(){
 			switch ($this->getFace()) {
 			case 'basic':
@@ -121,25 +133,25 @@ class Eleve extends Personnage {
 													</style>';
 				break;
 			case 'captamerica':
-						return ' url("web/pictures/char/captamerica.png")';
+								return 'captamerica';
 				break;
 			case 'homer':
-								return 'url("web/pictures/char/homersimpson.png")';
+								return 'homersimpson';
 				break;
 			case 'iron':
-								return 'background-image: url("web/pictures/char/ironman.png")';
+								return 'ironman';
 				break;
 			case 'mickey':
-								return 'url("web/pictures/char/mickey.png")';
+								return 'mickey';
 				break;
 			case 'stitch':
-								return 'url("web/pictures/char/stitch.png")';
+								return 'stitch';
 				break;
 			case 'winnie':
-								return 'url("web/pictures/char/winnie.png")';
+								return 'winnie';
 				break;
 			case 'yoda':
-								return 'url("web/pictures/char/yoda.png")';
+								return 'yoda';
 				break;
 		}
 	}

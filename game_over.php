@@ -18,9 +18,11 @@
 			$list_scores = $read_list_score->fetchAll(PDO::FETCH_OBJ);
  ?>
 
+
+
 <div id="enter-game"> 
     <a href="index.php"><img src="web/img/logo_slackness.png" alt="logo"></a>
-    <div class="gameov">Bien tenté, cliques sur <span>Rejouer</span> pour passer aux rattrapages ! </div>
+    <div class="gameov"><!-- getResult du current_player TO DO --></div>
     <form action="index.php" method="POST">
     <button type="submit" class="button-css">Rejouer</button>
     <div id="result"></div>
@@ -44,6 +46,4 @@
 </div>
     </form>
 </div>
-
-
  <?php include 'partial/footer.php'; ?>

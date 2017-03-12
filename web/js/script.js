@@ -10,6 +10,33 @@ var seconds = 1;
 var score = 0;
 var level = 1;
 
+// -------------------- Début Fonction JS/POO --------------------
+
+
+
+function refreshDatasPoo(){
+	$.ajax({
+		url: "ajax/refresh_datas_poo.php",
+		data: {
+			player: $('#pseudo-first span').html(),
+			level: level,
+			score: score,
+			life: lifepoints,
+			time: seconds,
+			function: 'alive'
+		},
+		method: "POST"
+	}).done(function(data){
+		// console.log('Envoie réussis = '+data);
+	}).fail(function(error){
+		// console.log(error);
+		
+	});
+}
+
+
+// -------------------- Fin fonction JS/POO --------------------
+
 // Fonction pour créer un futur élément et le personnaliser 
 function put_element(v, className) {
 	$('#col-' + v.y + '-' + v.x).addClass(className);
@@ -68,6 +95,8 @@ function get_previous_position(direction, x, y) {
 	}
 	return get_cell(x, y);
 }
+
+// Fonction pour envoyer les informations vers la bases de données
 function sendDatas() {
 	$.ajax({
 		url: "ajax/send_datas.php",
@@ -79,20 +108,21 @@ function sendDatas() {
 		},
 		method: "POST"
 	}).done(function(data){
-		console.log('Envoie vers la base réussi ! ');
+		// console.log(data);
 	}).fail(function(error){
-		console.log(error);
+		// console.log(error);
 		
 	});
 }
-// Si l'on perd tous ces points de vie, game over
+// Fonction qui se déclenche lors de la perte d'un point de vie
 function game_over() {
 	$('#lifepoints').html('Nombre de vie(s) : ' +lifepoints);
 	if (0 == lifepoints) {
+		//console.log('finish');
 		sendDatas();
 		$('#game-area').fadeToggle(2000); 
 		$('#game-infos').fadeToggle(2000); 
-		setTimeout(function(){ document.location.href="game_over.php"}, 3000);
+		setTimeout(function(){ document.location.href="game_over.php"}, 3000); 
 
 	}
 }
@@ -115,6 +145,7 @@ function player_cases(direction, x, y, element) {
 			return false;
 		case 'enemy':
 			lifepoints--;
+			refreshDatasPoo();
 			animLesslife();
 			game_over();
 			break;
@@ -126,6 +157,7 @@ function player_cases(direction, x, y, element) {
 			lifepoints++;
 			level++;
 			score += 500;
+			refreshDatasPoo();
 			return false;
 	}
 	var player = get_cell(player_pos.x, player_pos.y);
@@ -148,10 +180,12 @@ function box_cases(direction, x, y, element) {
 		case 'box':
 		case 'exit':
 			return false;
+			refreshDatasPoo();
 		case 'enemy':
 			element.data('type', '').removeClass('enemy');
 			score += 150;
 			showScore();
+			refreshDatasPoo();
 			if ($('.enemy').length == 0) {
 				// Si il n'y a plus d'énnemis on dégage la sortie 
 				$('.exit').data('type', '').removeClass('exit');
@@ -175,6 +209,7 @@ function enemy_cases(direction, x, y, element) {
 	}
 	if (element.hasClass('player-' + sens)) {
 		lifepoints--;
+		refreshDatasPoo();
 		animLesslife();
 		game_over();
 	}

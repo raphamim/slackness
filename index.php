@@ -34,17 +34,17 @@ include 'partial/header.php';
     </form>
     </div>
     <?php } else { 
+
            if ($player->getFace() == 'basic') {
                 $player->charChoice();
-           } else {?>
+           } else { ?>
                 <style type="text/css">
                         .player-right, .player-left {
-                        background-image: <?= $player->charChoice();?>;
+                        background-image: url("web/pictures/char/<?= $player->charChoice();?>.png");
                         background-size: 100% 87%;
                         }
 				</style>
-           <?php }
-        ?>
+           <?php } ?>
         <embed src="web/img/theme.mp3" autostart="true" loop="false" hidden="true"></embed>
         <div id="game-area"></div>
         <div id="game-infos">
