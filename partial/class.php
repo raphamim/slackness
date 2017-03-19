@@ -116,7 +116,8 @@ class Eleve extends Personnage {
 			session_start();
 			$_SESSION['name'] = $this->name;
 			$_SESSION['score'] = $this->score;
-			$_SESSION['time'] = $this->time;
+			$_SESSION['minute'] = intval($this->time / 60);
+			$_SESSION['seconde'] = $this->time % 60;
 			$_SESSION['level'] = $this->level;
 		} else {
 			return $this->name." est encore en vie !";

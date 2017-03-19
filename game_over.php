@@ -25,7 +25,12 @@
     <?php session_start(); ?>
     <div class="gameov"><!-- Résultat du current_player -->
         <p>Bien essayé <span><?= $_SESSION['name']; ?></span> ! 
-        Tu as atteint un score de <span><?= $_SESSION['score']; ?></span> en seulement <span><?= $_SESSION['time']; ?></span> secondes<br/> 
+        Tu as atteint un score de <span><?= $_SESSION['score']; ?></span> en seulement 
+        <?php if ($_SESSION['minute'] == 0){ ?>
+        <span><?= $_SESSION['seconde']; ?></span> secondes<br/> 
+        <?php } else { ?>
+        <span><?= $_SESSION['minute']; ?></span> minute(s) et <span><?= $_SESSION['seconde']; ?></span> secondes<br/>  
+        <?php } ?>
 		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !</p>
     </div>
     <form action="index.php" method="POST">
