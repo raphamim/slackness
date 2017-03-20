@@ -124,7 +124,7 @@ class Eleve extends Personnage {
 		}
 	}
 
-	// Fonction pour afficher le résultats lors du game over
+
 	public function result(){
 		return 'Bien essayé <span>'.$this->name.'</span>! Tu as atteint un score de <span>'.$this->score.'</span> en seulement'.$this->time.' secondes<br/> 
 		Es-tu assez bon pour rentrer dans notre classement ? Réponse ci-dessous !';

@@ -1,4 +1,5 @@
 <?php 
+// Appel a la bdd afin d'afficher le classement des 5 meilleurs joueurs 
 	include 'partial/header.php';
 
     define('DSN', 'mysql:host=localhost;dbname=slackness');

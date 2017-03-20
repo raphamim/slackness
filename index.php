@@ -1,16 +1,21 @@
 
 <?php 
 include 'partial/header.php';
+ // Variable onoff permet de gérer l'écran de connexion ou l'écran de jeu
     $onoff = false;
+
     $my_id = ''; 
+
+    // Connexion du $player (non personnelle)
         if (!empty($_POST['my_id']) && (strlen($_POST['my_id']) < 16)) {
             // On réceptionne le champ depuis le POST dans une variable
             $my_id = htmlspecialchars($_POST['my_id']);
-            $player = new Eleve($my_id, 3);
+            $player = new Eleve($my_id);
             $player->setFace(htmlspecialchars($_POST['choix']));
             $player->setIsLogged(true);
             $onoff = $player->getIsLogged(); 
         }
+  // ------------ Ecran de connexion ------------      
  if ($onoff === false) {
      
  
@@ -34,17 +39,20 @@ include 'partial/header.php';
     </form>
     </div>
     <?php } else { 
-
+ // ------------ Ecran de jeu ------------
+        //attribution du personnage
            if ($player->getFace() == 'basic') {
                 $player->charChoice();
            } else { ?>
                 <style type="text/css">
                         .player-right, .player-left {
-                        background-image: url("web/pictures/char/<?= $player->charChoice();?>.png");
-                        background-size: 100% 87%;
+                            background-image: url("web/pictures/char/<?= $player->charChoice();?>.png");
+                            background-size: 100% 87%;
                         }
 				</style>
            <?php } ?>
+
+        <!-- Début de l'écran de jeu -->
         <embed src="web/img/theme.mp3" autostart="true" loop="false" hidden="true"></embed>
         <div id="game-area"></div>
         <div id="game-infos">

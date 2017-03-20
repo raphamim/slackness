@@ -11,9 +11,6 @@ var score = 0;
 var level = 1;
 
 // -------------------- Début Fonction JS/POO --------------------
-
-
-
 function refreshDatasPoo(){
 	$.ajax({
 		url: "ajax/refresh_datas_poo.php",
@@ -33,8 +30,6 @@ function refreshDatasPoo(){
 		
 	});
 }
-
-
 // -------------------- Fin fonction JS/POO --------------------
 
 // Fonction pour créer un futur élément et le personnaliser 
@@ -102,8 +97,8 @@ function sendDatas() {
 		url: "ajax/send_datas.php",
 		data: {
 			player: $('#pseudo-first span').html(),
-			level: $('#levels span').html(),
-			score: $('#scores span').html(),
+			level: level,
+			score: score,
 			function: 'sendDatas'
 		},
 		method: "POST"
